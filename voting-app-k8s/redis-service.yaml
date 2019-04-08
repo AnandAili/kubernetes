@@ -9,7 +9,7 @@ spec:
   type: ClusterIP
   ports:
     - port: 6379
-      targetPort: 6347
+      targetPort: 6379
   selector:
-    name: redis-app
+    name: redis-app-pod
     app: demo-voting-app

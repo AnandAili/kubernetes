@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubia-liveness
+spec:
+  containers:
+    - image: anandaili/kubia:liveness
+      name: kubia
+      ports:
+        - containerPort: 8080
+          protocol: TCP
+      livenessProbe:
+        httpGet:
+          path: /health
+          port: 8080
+        initialDelaySeconds: 10s

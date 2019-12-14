@@ -3,6 +3,7 @@ kind: Pod
 metadata:
   name: kubia-manual
 spec:
+  nodeName: aks-agentpool-19694923-vmss000000
   containers:
     - image: anandaili/kubia
       name: kubia

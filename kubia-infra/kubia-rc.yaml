@@ -15,7 +15,11 @@ spec:
         - image: anandaili/kubia:latest
           name: kubia
           ports:
-            - containerPort: 8080
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+            - name: https
+              containerPort: 8443
               protocol: TCP
           livenessProbe:
             httpGet:

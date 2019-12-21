@@ -1,0 +1,254 @@
+# Kubernetes Services
+
+## Connecting External Services. For example: database running outside cluster
+
+## Connecting External Services
+## Connecting External Services
+
+Running commands inside  the Pod's container
+
+```kubectl exec -it <pod-name> -- <command>```
+
+
+## Connecting External Services
+
+Running commands inside  the Pod's container
+
+```kubectl exec -it <pod-name> -- <command>```
+
+
+## Connecting External Services
+
+Running commands inside  the Pod's container
+
+```kubectl exec -it <pod-name> -- <command>```
+
+
+## Connecting External Services
+
+Running commands inside  the Pod's container
+
+```kubectl exec -it <pod-name> -- <command>```
+
+
+## Connecting External Services
+
+Running commands inside  the Pod's container
+
+```kubectl exec -it <pod-name> -- <command>```
+
+
+## Connecting External Services
+
+Running commands inside  the Pod's container
+
+```kubectl exec -it <pod-name> -- <command>```
+
+
+## Connecting External Services
+
+Running commands inside  the Pod's container
+
+```kubectl exec -it <pod-name> -- <command>```
+
+
+## Connecting External Services
+
+Running commands inside  the Pod's container
+
+```kubectl exec -it <pod-name> -- <command>```
+
+
+## Connecting External Services
+
+Running commands inside  the Pod's container
+
+```kubectl exec -it <pod-name> -- <command>```
+
+
+## Connecting External Services
+
+Running commands inside  the Pod's container
+
+```kubectl exec -it <pod-name> -- <command>```
+
+
+## Connecting External Services
+
+Running commands inside  the Pod's container
+
+```kubectl exec -it <pod-name> -- <command>```
+
+
+## Connecting External Services
+
+Running commands inside  the Pod's container
+
+```kubectl exec -it <pod-name> -- <command>```
+
+
+## Connecting External Services
+
+Running commands inside  the Pod's container
+
+```kubectl exec -it <pod-name> -- <command>```
+
+
+## Connecting External Services
+
+Running commands inside  the Pod's container
+
+```kubectl exec -it <pod-name> -- <command>```
+
+For example: ```kubectl exec -it kubia-rc-jqh2f -- bash```
+
+> Note: curl-ing to service is possible,but ping does not work for service.
+
+## Exposing Services to External Clients
+
+#----------------------------------------------------------------------------------
+
+# Namespace and Context
+
+In order to demonstrate the usage of *Namespace* and *Context*, create two lower environments DEV and TA. And env PROD for the Production using Namespaces
+Kubernetes
+- [x] dev
+- [x] ta
+- [x] prod
+
+## How DO I create different environments?
+Use the following commands in order to create different environments. In my case I will 
+create dev, ta and prod environments.
+
+```k create -f dev-namespace.yaml```
+
+```k create -f ta-namespace.yaml```
+
+```k create -f prod-namespace.yaml```
+
+If you list all the namespaces, you will see above created namespaces as well
+```
+$ k get namespaces
+NAME              STATUS   AGE
+default           Active   135d
+dev               Active   4m3s
+docker            Active   135d
+kube-node-lease   Active   135d
+kube-public       Active   135d
+kube-system       Active   135d
+prod              Active   60s
+ta                Active   2m52s
+```
+
+Let's create some pods in dev namespace. Current context docker-desktop is being set.
+
+### How do I create a context for dev namespace and set it as a current namespace for
+creating further  resources under it?
+We can easily modify current context to point to any namespace.
+
+``` kubectl config set-context $(kubectl config current-context) --namespace=<name>```
+
+Above command command will modify the current context to the namespace provided in the
+namespace option
+
+Let's try to Modify the current context to the dev namespace.
+
+```
+k config set-context $(k config current-context) --namespace=dev
+Context "docker-desktop" modified. 
+```
+
+### How do I test what namespace is set in the current context?
+Display all contexts using the below command. thats where we can see all contexts and its namespaces.
+```
+k config get-contexts
+CURRENT   NAME                                                            CLUSTER                                                         AUTHINFO                                                        NAMESPACE
+          arn:aws:eks:eu-west-1:303003123018:cluster/c59093-eks-cluster   arn:aws:eks:eu-west-1:303003123018:cluster/c59093-eks-cluster   arn:aws:eks:eu-west-1:303003123018:cluster/c59093-eks-cluster
+          arn:aws:eks:eu-west-1:303003123018:cluster/dipclusterc2         arn:aws:eks:eu-west-1:303003123018:cluster/dipclusterc2         arn:aws:eks:eu-west-1:303003123018:cluster/dipclusterc2
+          arn:aws:eks:eu-west-1:303003123018:cluster/ga1423-eks-cluster   arn:aws:eks:eu-west-1:303003123018:cluster/ga1423-eks-cluster   arn:aws:eks:eu-west-1:303003123018:cluster/ga1423-eks-cluster
+          docker
+*         docker-desktop                                                  docker-desktop                                                  docker-desktop                                                  dev
+          docker-for-desktop                                              docker-desktop                                                  docker-desktop
+          minikube                                                        minikube                                                        minikube
+```
+Now we have switched to dev namespace. to create pods in this namespace, execute the below command
+
+```
+k create -f ../kubia-rc.yaml
+```
+
+Here, If you closely observe  the above command that namespace is not being mentioned.
+So pods will be created in the namespace of the current context.
+
+Verify whether pods as been created or not. In order to do so, execute the below command
+```
+k get pods
+NAME             READY   STATUS    RESTARTS   AGE
+kubia-rc-4fnlp   1/1     Running   0          7m25s
+kubia-rc-dcd78   1/1     Running   0          7m25s
+kubia-rc-g9z2f   1/1     Running   0          7m25s
+```
+
+#### Did you get confused ? and Do you doubt that these pods are from default namespace?
+> If this is the case, Lets list all pods from all namespace
+```
+ k get pods -A
+ NAMESPACE     NAME                                     READY   STATUS        RESTARTS   AGE
+ default       kubia-rc-jqh2f                           1/1     Running       0          19h
+ default       kubia-rc-pnwpv                           1/1     Running       0          19h
+ default       kubia-rc-vkhm5                           1/1     Running       0          19h
+ dev           kubia-rc-49wkw                           1/1     Running       0          6h5m
+ dev           kubia-rc-6xnzf                           1/1     Running       0          6h5m
+ dev           kubia-rc-9cqvj                           1/1     Running       0          6h5m
+ docker        compose-6c67d745f6-vsksm                 1/1     Running       5          136d
+ docker        compose-api-57ff65b8c7-lfqj2             1/1     Running       5          136d
+ kube-system   coredns-fb8b8dccf-9b6fv                  1/1     Running       7          136d
+ kube-system   coredns-fb8b8dccf-s5f5r                  1/1     Running       7          136d
+ kube-system   etcd-docker-desktop                      1/1     Running       6          136d
+ kube-system   kube-apiserver-docker-desktop            1/1     Running       8          136d
+ kube-system   kube-controller-manager-docker-desktop   1/1     Running       7          136d
+ kube-system   kube-proxy-6mwhq                         1/1     Running       5          136d
+ kube-system   kube-scheduler-docker-desktop            1/1     Running       7          136d
+``` 
+
+Let's repeat the steps that runs the pods in ta and prod namespace, and list them all.
+
+```
+k config set-context $(k config current-context) --namespace=ta
+Context "docker-desktop" modified.
+
+k create -f ../kubia-rc.yaml
+replicationcontroller/kubia-rc created
+
+k config set-context docker-desktop --namespace=prod
+Context "docker-desktop" modified.
+
+k create -f ../kubia-rc.yaml
+replicationcontroller/kubia-rc created
+
+k get pods -A
+NAMESPACE     NAME                                     READY   STATUS    RESTARTS   AGE
+default       kubia-rc-jqh2f                           1/1     Running   0          19h
+default       kubia-rc-pnwpv                           1/1     Running   0          19h
+default       kubia-rc-vkhm5                           1/1     Running   0          19h
+dev           kubia-rc-49wkw                           1/1     Running   0          6h11m
+dev           kubia-rc-6xnzf                           1/1     Running   0          6h11m
+dev           kubia-rc-9cqvj                           1/1     Running   0          6h11m
+docker        compose-6c67d745f6-vsksm                 1/1     Running   5          136d
+docker        compose-api-57ff65b8c7-lfqj2             1/1     Running   5          136d
+kube-system   coredns-fb8b8dccf-9b6fv                  1/1     Running   7          136d
+kube-system   coredns-fb8b8dccf-s5f5r                  1/1     Running   7          136d
+kube-system   etcd-docker-desktop                      1/1     Running   6          136d
+kube-system   kube-apiserver-docker-desktop            1/1     Running   8          136d
+kube-system   kube-controller-manager-docker-desktop   1/1     Running   7          136d
+kube-system   kube-proxy-6mwhq                         1/1     Running   5          136d
+kube-system   kube-scheduler-docker-desktop            1/1     Running   7          136d
+prod          kubia-rc-c6fxr                           1/1     Running   0          12s
+prod          kubia-rc-nzt92                           1/1     Running   0          12s
+prod          kubia-rc-swq6b                           1/1     Running   0          12s
+ta            kubia-rc-8fss9                           1/1     Running   0          2m10s
+ta            kubia-rc-ftvm2                           1/1     Running   0          2m10s
+ta            kubia-rc-trf2b                           1/1     Running   0          2m10s
+
+```
+

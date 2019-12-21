@@ -64,7 +64,7 @@ Context "docker-desktop" modified.
 ```
 
 ### How do I test what namespace is set in the current context?
-Display all context. thats where can see all context and its namespaces.
+Display all contexts using the below command. thats where we can see all contexts and its namespaces.
 ```
 k config get-contexts
 CURRENT   NAME                                                            CLUSTER                                                         AUTHINFO                                                        NAMESPACE
@@ -76,4 +76,83 @@ CURRENT   NAME                                                            CLUSTE
           docker-for-desktop                                              docker-desktop                                                  docker-desktop
           minikube                                                        minikube                                                        minikube
 ```
+Now we have switched to dev namespace. to create pods in this namespace, execute the below command
+
+```
+k create -f ../kubia-rc.yaml
+```
+
+Here, If you closely observe  the above command that namespace is not being mentioned.
+So pods will be created in the namespace of the current context.
+
+Verify whether pods as been created or not. In order to do so, execute the below command
+```
+k get pods
+NAME             READY   STATUS    RESTARTS   AGE
+kubia-rc-4fnlp   1/1     Running   0          7m25s
+kubia-rc-dcd78   1/1     Running   0          7m25s
+kubia-rc-g9z2f   1/1     Running   0          7m25s
+```
+
+#### Did you get confused ? and Do you doubt that these pods are from default namespace?
+> If this is the case, Lets list all pods from all namespace
+> k get pods -A
+> NAMESPACE     NAME                                     READY   STATUS        RESTARTS   AGE
+> default       kubia-rc-jqh2f                           1/1     Running       0          19h
+> default       kubia-rc-pnwpv                           1/1     Running       0          19h
+> default       kubia-rc-vkhm5                           1/1     Running       0          19h
+> dev           kubia-rc-49wkw                           1/1     Running       0          6h5m
+> dev           kubia-rc-6xnzf                           1/1     Running       0          6h5m
+> dev           kubia-rc-9cqvj                           1/1     Running       0          6h5m
+> docker        compose-6c67d745f6-vsksm                 1/1     Running       5          136d
+> docker        compose-api-57ff65b8c7-lfqj2             1/1     Running       5          136d
+> kube-system   coredns-fb8b8dccf-9b6fv                  1/1     Running       7          136d
+> kube-system   coredns-fb8b8dccf-s5f5r                  1/1     Running       7          136d
+> kube-system   etcd-docker-desktop                      1/1     Running       6          136d
+> kube-system   kube-apiserver-docker-desktop            1/1     Running       8          136d
+> kube-system   kube-controller-manager-docker-desktop   1/1     Running       7          136d
+> kube-system   kube-proxy-6mwhq                         1/1     Running       5          136d
+> kube-system   kube-scheduler-docker-desktop            1/1     Running       7          136d
  
+
+Let's repeat the steps that runs the pods in ta and prod namespace, and list them all.
+
+```
+k config set-context $(k config current-context) --namespace=ta
+Context "docker-desktop" modified.
+
+k create -f ../kubia-rc.yaml
+replicationcontroller/kubia-rc created
+
+k config set-context docker-desktop --namespace=prod
+Context "docker-desktop" modified.
+
+k create -f ../kubia-rc.yaml
+replicationcontroller/kubia-rc created
+
+k get pods -A
+NAMESPACE     NAME                                     READY   STATUS    RESTARTS   AGE
+default       kubia-rc-jqh2f                           1/1     Running   0          19h
+default       kubia-rc-pnwpv                           1/1     Running   0          19h
+default       kubia-rc-vkhm5                           1/1     Running   0          19h
+dev           kubia-rc-49wkw                           1/1     Running   0          6h11m
+dev           kubia-rc-6xnzf                           1/1     Running   0          6h11m
+dev           kubia-rc-9cqvj                           1/1     Running   0          6h11m
+docker        compose-6c67d745f6-vsksm                 1/1     Running   5          136d
+docker        compose-api-57ff65b8c7-lfqj2             1/1     Running   5          136d
+kube-system   coredns-fb8b8dccf-9b6fv                  1/1     Running   7          136d
+kube-system   coredns-fb8b8dccf-s5f5r                  1/1     Running   7          136d
+kube-system   etcd-docker-desktop                      1/1     Running   6          136d
+kube-system   kube-apiserver-docker-desktop            1/1     Running   8          136d
+kube-system   kube-controller-manager-docker-desktop   1/1     Running   7          136d
+kube-system   kube-proxy-6mwhq                         1/1     Running   5          136d
+kube-system   kube-scheduler-docker-desktop            1/1     Running   7          136d
+prod          kubia-rc-c6fxr                           1/1     Running   0          12s
+prod          kubia-rc-nzt92                           1/1     Running   0          12s
+prod          kubia-rc-swq6b                           1/1     Running   0          12s
+ta            kubia-rc-8fss9                           1/1     Running   0          2m10s
+ta            kubia-rc-ftvm2                           1/1     Running   0          2m10s
+ta            kubia-rc-trf2b                           1/1     Running   0          2m10s
+
+```
+

@@ -58,8 +58,10 @@ namespace option
 
 Let's try to Modify the current context to the dev namespace.
 
-```k config set-context $(k config current-context) --namespace=dev
-Context "docker-desktop" modified. ```
+```
+k config set-context $(k config current-context) --namespace=dev
+Context "docker-desktop" modified. 
+```
 
 ### How do I test what namespace is set in the current context?
 Display all context. thats where can see all context and its namespaces.

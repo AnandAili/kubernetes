@@ -96,24 +96,25 @@ kubia-rc-g9z2f   1/1     Running   0          7m25s
 
 #### Did you get confused ? and Do you doubt that these pods are from default namespace?
 > If this is the case, Lets list all pods from all namespace
-> k get pods -A
-> NAMESPACE     NAME                                     READY   STATUS        RESTARTS   AGE
-> default       kubia-rc-jqh2f                           1/1     Running       0          19h
-> default       kubia-rc-pnwpv                           1/1     Running       0          19h
-> default       kubia-rc-vkhm5                           1/1     Running       0          19h
-> dev           kubia-rc-49wkw                           1/1     Running       0          6h5m
-> dev           kubia-rc-6xnzf                           1/1     Running       0          6h5m
-> dev           kubia-rc-9cqvj                           1/1     Running       0          6h5m
-> docker        compose-6c67d745f6-vsksm                 1/1     Running       5          136d
-> docker        compose-api-57ff65b8c7-lfqj2             1/1     Running       5          136d
-> kube-system   coredns-fb8b8dccf-9b6fv                  1/1     Running       7          136d
-> kube-system   coredns-fb8b8dccf-s5f5r                  1/1     Running       7          136d
-> kube-system   etcd-docker-desktop                      1/1     Running       6          136d
-> kube-system   kube-apiserver-docker-desktop            1/1     Running       8          136d
-> kube-system   kube-controller-manager-docker-desktop   1/1     Running       7          136d
-> kube-system   kube-proxy-6mwhq                         1/1     Running       5          136d
-> kube-system   kube-scheduler-docker-desktop            1/1     Running       7          136d
- 
+```
+ k get pods -A
+ NAMESPACE     NAME                                     READY   STATUS        RESTARTS   AGE
+ default       kubia-rc-jqh2f                           1/1     Running       0          19h
+ default       kubia-rc-pnwpv                           1/1     Running       0          19h
+ default       kubia-rc-vkhm5                           1/1     Running       0          19h
+ dev           kubia-rc-49wkw                           1/1     Running       0          6h5m
+ dev           kubia-rc-6xnzf                           1/1     Running       0          6h5m
+ dev           kubia-rc-9cqvj                           1/1     Running       0          6h5m
+ docker        compose-6c67d745f6-vsksm                 1/1     Running       5          136d
+ docker        compose-api-57ff65b8c7-lfqj2             1/1     Running       5          136d
+ kube-system   coredns-fb8b8dccf-9b6fv                  1/1     Running       7          136d
+ kube-system   coredns-fb8b8dccf-s5f5r                  1/1     Running       7          136d
+ kube-system   etcd-docker-desktop                      1/1     Running       6          136d
+ kube-system   kube-apiserver-docker-desktop            1/1     Running       8          136d
+ kube-system   kube-controller-manager-docker-desktop   1/1     Running       7          136d
+ kube-system   kube-proxy-6mwhq                         1/1     Running       5          136d
+ kube-system   kube-scheduler-docker-desktop            1/1     Running       7          136d
+``` 
 
 Let's repeat the steps that runs the pods in ta and prod namespace, and list them all.
 

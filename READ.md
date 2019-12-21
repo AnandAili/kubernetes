@@ -4,18 +4,21 @@
 
 ## Connecting External Services
 
-Running commands in the Pod's container
+Running commands inside  the Pod's container
+
 ```kubectl exec -it <pod-name> -- <command>```
+
 For example: ```kubectl exec -it kubia-rc-jqh2f -- bash```
 
 > Note: curl-ing to service is possible,but ping does not work for service.
 
 ## Exposing Services to External Clients
 
-
+#----------------------------------------------------------------------------------
 
 # Namespace and Context
-Create two lower environments DEV and TA. And env PROD for the Production using Namespaces
+
+In order to demonstrate the usage of *Namespace* and *Context*, create two lower environments DEV and TA. And env PROD for the Production using Namespaces
 Kubernetes
 - [x] dev
 - [x] ta

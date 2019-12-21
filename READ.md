@@ -17,9 +17,9 @@ For example: ```kubectl exec -it kubia-rc-jqh2f -- bash```
 # Namespace and Context
 Create two lower environments DEV and TA. And env PROD for the Production using Namespaces
 Kubernetes
-[ x ] dev
-[ x ] ta
-[ x ] prod
+- [x] dev
+- [x] ta
+- [x] prod
 
 ## How DO I create different environments?
 Use the following commands in order to create different environments. In my case I will 

@@ -26,7 +26,9 @@ Use the following commands in order to create different environments. In my case
 create dev, ta and prod environments.
 
 ```k create -f dev-namespace.yaml```
+
 ```k create -f ta-namespace.yaml```
+
 ```k create -f prod-namespace.yaml```
 
 If you list all the namespaces, you will see above created namespaces as well
@@ -48,11 +50,14 @@ Let's create some pods in dev namespace. Current context docker-desktop is being
 ### How do I create a context for dev namespace and set it as a current namespace for
 creating further  resources under it?
 We can easily modify current context to point to any namespace.
+
 ``` kubectl config set-context $(kubectl config current-context) --namespace=<name>```
+
 Above command command will modify the current context to the namespace provided in the
 namespace option
 
 Let's try to Modify the current context to the dev namespace.
+
 ```k config set-context $(k config current-context) --namespace=dev
 Context "docker-desktop" modified. ```
 

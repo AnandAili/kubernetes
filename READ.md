@@ -1,4 +1,4 @@
-# CKAD exam skilled measured
+# CKAD exam skill measured
 
 - [ ] 13% – Core Concepts
 - [ ] 18% – Configuration

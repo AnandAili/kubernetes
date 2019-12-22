@@ -235,5 +235,58 @@ status:
   startTime: "2019-12-22T09:39:54Z"
 ```
 
+- Use ```kubectl describe``` command
+```
+k describe pod nginx-pod
+Name:               nginx-pod
+Namespace:          default
+Priority:           0
+PriorityClassName:  <none>
+Node:               minikube/10.0.2.15
+Start Time:         Sun, 22 Dec 2019 10:39:54 +0100
+Labels:             app=nginx
+Annotations:        <none>
+Status:             Running
+IP:                 172.17.0.6
+Containers:
+  nginx-pod:
+    Container ID:   docker://f5561864ad9d243fa33dfc37b33537a3abc4ddfe71db63d81b871409d739d18b
+    Image:          nginx
+    Image ID:       docker-pullable://nginx@sha256:50cf965a6e08ec5784009d0fccb380fc479826b6e0e65684d9879170a9df8566
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Sun, 22 Dec 2019 10:40:05 +0100
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-j6cvd (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+Volumes:
+  default-token-j6cvd:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-j6cvd
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  26m   default-scheduler  Successfully assigned default/nginx-pod to minikube
+  Normal  Pulling    26m   kubelet, minikube  Pulling image "nginx"
+  Normal  Pulled     26m   kubelet, minikube  Successfully pulled image "nginx"
+  Normal  Created    26m   kubelet, minikube  Created container nginx-pod
+  Normal  Started    26m   kubelet, minikube  Started container nginx-pod
+```
+
+### Command Autocompletion
 
 

@@ -1,0 +1,13 @@
+apiVersion: v1
+data:
+  application.properties: |
+    environment=dev
+    db_host=production.db.com
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2019-12-25T14:34:38Z"
+  name: configmap-file
+  namespace: default
+  resourceVersion: "297345"
+  selfLink: /api/v1/namespaces/default/configmaps/configmap-file
+  uid: adfe83ca-2723-11ea-9cf4-025000000001

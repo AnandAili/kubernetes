@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mongodb
+spec:
+  containers:
+  - image: mongo
+    name: mongodb
+    volumeMounts:
+      - name: mongodb-data
+        mountPath: /data/db
+  volumes:
+    - name: mongodb-data
+      hostPath:
+        path: /Users/aili/Desktop/CKAD/kubernetes/mongodb/data 
+        type: Directory

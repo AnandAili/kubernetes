@@ -1,7 +1,9 @@
 apiVersion: v1
 data:
   my-nginx-config.conf: "server {\n  listen              80;\n  server_name         www.kubia-example.com;\n\n
-    \ gzip off;                                       \n  gzip_types text/plain application/xml;
+    \ gzip off;                                       \n  gzip_types text/plain application/xml; \n\n
+    \ ssl_certificate     certs/https.cert; \n ssl_certificate_key certs/https.key; \n ssl_protocols       TLSv1 TLSv1.1 TLSv1.2; \n
+    \ ssl_ciphers         HIGH:!aNULL:!MD5; \n\n
     \        \n\n  location / {\n    root   /usr/share/nginx/html;\n    index  index.html
     index.htm;\n  }\n}\n"
   sleep-interval: |

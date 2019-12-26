@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: easy-curl
+  name: easy-curl
+spec:
+  containers:
+  - image: anandaili/easy-curl:latest
+    name: easy-curl
+    

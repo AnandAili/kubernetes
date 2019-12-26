@@ -1,9 +1,5 @@
-# Accessing pod metadata and other resources from applications
+# StatefulSets: deploying replicated stateful applications
 
-## PASSING METADATA THROUGH THE DOWNWARD API
+## REPLICATING STATEFUL PODS
 
-### Exposing metadata through environment variables
-    
-    Requests cpu and memory - 1000m = 1 core
 
-### Passing metadata through files in a downwardAPI volume

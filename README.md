@@ -1,7 +1,7 @@
 # Setting up Kubernetes Cluster
 
 ## Minikune
-   To setup Kubernetes Cluster using Minikube. Please follow [Start Kubernetes Cluster using Minikube] (minikube/README.md)
+   To setup Kubernetes Cluster using Minikube. Please follow [Start Kubernetes Cluster using Minikube](minikube/README.md)
 
 ## Local Virtual Machine
 

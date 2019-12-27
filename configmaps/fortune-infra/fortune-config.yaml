@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: fortune-config
-data:
-  sleep-interval: "18"
-  right_one: "true"
-  false-one: "false"

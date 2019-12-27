@@ -2,6 +2,10 @@
 
 ## Minikune
 - [x] Uninstall Minikube if already installes
+- [ ] Uninstall `kubectl`
+- [ ] Install `kubectl`
+- [ ] Install `minikube`
+- [ ] Check the Installation
 
 ### Uninstalling minikube 
 ```
@@ -20,23 +24,21 @@ docker system prune -af --volumes
 I was unable to figure out how to uninstall `kubectl` in my MacBook Pro. I tried it using `brew uninstall kubectl`, `brew uninstall kubernetes-cli`.
 But finally when I uninstall docker-desktop, it inturn uninstalls the kubectl.
 
-### Install 'kubectl'
+### Install `kubectl`
+
 [Install kubectl on mac](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-macos), I am just following instructions from 
 kubernetes documentation. This is good enough as of now 
 
 ### Install minikube
-[Install minikube on mac](), It's quite easy to get started with kubernetes using minikube.
+[Install minikube on mac](https://kubernetes.io/docs/tasks/tools/install-minikube/), It's quite easy to get started with kubernetes using minikube.
 
 - Download minikube and make it executable
   ```
   curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64 \
   >   && chmod +x minikube
-```
-
+  ```
 - Move it to `/usr/local/bin`
-```
-mv minikube /usr/local/bin
-```
+``` mv minikube /usr/local/bin```
 
 - Start Minikube
 ```

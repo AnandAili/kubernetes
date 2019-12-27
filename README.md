@@ -1,5 +1,15 @@
-# StatefulSets: deploying replicated stateful applications
+# Setting up Kubernetes Cluster
 
-## REPLICATING STATEFUL PODS
+## Minikune
+
+## Local Virtual Machine
+
+## Docker-Desktop on MacBook Pro
+
+## Google Cloud Platform
+
+## EKS
+
+## AKS
 
 
